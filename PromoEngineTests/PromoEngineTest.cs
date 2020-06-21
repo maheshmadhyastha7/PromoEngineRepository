@@ -22,11 +22,11 @@ namespace PromoEngineTests
         {
             List<string> orders = new List<string>
             {
-                "1*A","1*B","1*C"
+                "5*A","1*B","1*C"
             };
 
             var totalValue = promoClient.ApplyPromo(activePromo, orders);
-            totalValue.Should().Be(100);
+            totalValue.Should().Be(280);
 
         }
 
