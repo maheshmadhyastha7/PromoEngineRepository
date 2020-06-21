@@ -40,8 +40,19 @@ namespace PromoEngineTests
             };
 
             var totalValue = promoClient.ApplyPromo(activePromo, orders);
-            totalValue.Should().Be(370);
+            totalValue.Should().Be(390);
         }
+        [Test]
+        [TestCase("C & D for 30")]
+        public void TestScenario3(string activePromo)
+        {
+            List<string> orders = new List<string>
+            {
+                "3*A","5*B","1*C","1*D"
+            };
 
+            var totalValue = promoClient.ApplyPromo(activePromo, orders);
+            totalValue.Should().Be(330);
+        }
     }
 }
