@@ -44,6 +44,9 @@
     <Compile Include="IPromoStrategy.cs" />
     <Compile Include="PromoEngineClient.cs" />
     <Compile Include="PromoEngineHandler.cs" />
+    <Compile Include="PromotionOnA.cs" />
+    <Compile Include="PromotionOnB.cs" />
+    <Compile Include="PromotionOnCAndD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
