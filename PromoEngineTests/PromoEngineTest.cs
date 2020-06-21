@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
+using PromoEngineRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +11,36 @@ namespace PromoEngineTests
 {
     public class PromoEngineTest
     {
-        [Test]
-        public void TestScenario1()
+        PromoEngineClient promoClient;
+        public PromoEngineTest()
         {
+            promoClient = new PromoEngineClient();
+        }
+        [Test]
+        [TestCase("3 of A's for 130")]
+        public void TestScenario1(string activePromo)
+        {
+            List<string> orders = new List<string>
+            {
+                "1*A","1*B","1*C"
+            };
 
+            var totalValue = promoClient.ApplyPromo(activePromo, orders);
+            totalValue.Should().Be(100);
 
         }
 
         [Test]
-        public void TestScenario2()
+        [TestCase("2 of B's for 45")]
+        public void TestScenario2(string activePromo)
         {
+            List<string> orders = new List<string>
+            {
+                "5*A","5*B","1*C"
+            };
 
+            var totalValue = promoClient.ApplyPromo(activePromo, orders);
+            totalValue.Should().Be(370);
         }
 
     }
